@@ -19,7 +19,7 @@ public class KafkaProducerConfig {
     private String bootstrapServers;
 
     public Map<String, Object> producerConfig(){
-        System.out.printf("Inside KafkaProducerConfig:producerConfig()");
+        System.out.println("Inside KafkaProducerConfig:producerConfig()");
         HashMap<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -29,13 +29,13 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProducerFactory<String, String> producerFactory(){
-        System.out.printf("Inside KafkaProducerConfig:producerFactory()");
+        System.out.println("Inside KafkaProducerConfig:producerFactory()");
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory){
-        System.out.printf("Inside KafkaProducerConfig:kafkaTemplate()");
+        System.out.println("Inside KafkaProducerConfig:kafkaTemplate()");
         return new KafkaTemplate<>(producerFactory);
     }
 

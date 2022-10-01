@@ -8,10 +8,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
-public class MyKafkaConsumer {
+public class KafkaClientConsumer {
 
     public static void main(String[] args) {
-        System.out.println("MyKafkaConsumer::main()::START");
+
+        System.out.println("KafkaClientConsumer::main()::START");
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
@@ -48,7 +49,7 @@ public class MyKafkaConsumer {
                 count++;
             }
 
-            System.out.println("MyKafkaConsumer::main()::DONE");
+            System.out.println("KafkaClientConsumer::main()::DONE");
         }
         catch (Exception e){
             e.printStackTrace();
