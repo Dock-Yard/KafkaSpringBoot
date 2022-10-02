@@ -1,4 +1,4 @@
-package com.standalone.java.standard;
+package com.standalone.java.standard.consumer;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;

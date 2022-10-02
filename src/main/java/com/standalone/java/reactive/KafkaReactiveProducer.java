@@ -1,6 +1,5 @@
 package com.standalone.java.reactive;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.IntegerSerializer;
@@ -14,15 +13,14 @@ import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-public class MyKafkaReactiveProducer {
+public class KafkaReactiveProducer {
     static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("HH:mm:ss:SSS z dd MMM yyyy");
 
     public static void main(String[] args) {
         try{
-            System.out.println("MyKafkaReactiveProducer::main()::START");
+            System.out.println("KafkaReactiveProducer::main()::START");
 
             Properties properties = new Properties();
             properties.put("bootstrap.servers", "localhost:9092");
@@ -59,7 +57,7 @@ public class MyKafkaReactiveProducer {
             latch.await(10, TimeUnit.SECONDS);
             kafkaSender.close();
 
-            System.out.println("MyKafkaReactiveProducer::main()::DONE");
+            System.out.println("KafkaReactiveProducer::main()::DONE");
         }
         catch (Exception e){
             e.printStackTrace();

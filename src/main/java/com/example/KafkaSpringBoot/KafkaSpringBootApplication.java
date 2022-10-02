@@ -13,26 +13,16 @@ public class KafkaSpringBootApplication {
 		SpringApplication.run(KafkaSpringBootApplication.class, args);
 	}
 
+	/**
+	 * Sends message to Kafka
+	 */
 	@Bean
+
 	public CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
 		try {
 			System.out.printf("Inside KafkaSpringBootApplication:commandLineRunner()");
 			return args -> {
 				kafkaTemplate.send("airPlaneTopic", "Hello World");
-			};
-		}
-		catch (Exception e){
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Bean
-	public CommandLineRunner commandLineRunner2(KafkaTemplate<String, String> kafkaTemplate){
-		try {
-			System.out.printf("Inside KafkaSpringBootApplication:commandLineRunner2()");
-			return args -> {
-
 			};
 		}
 		catch (Exception e){

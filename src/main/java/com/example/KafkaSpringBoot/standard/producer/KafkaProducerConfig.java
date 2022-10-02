@@ -1,4 +1,4 @@
-package com.example.KafkaSpringBoot.config;
+package com.example.KafkaSpringBoot.standard.producer;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

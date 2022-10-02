@@ -1,4 +1,4 @@
-package com.example.KafkaSpringBoot.config;
+package com.example.KafkaSpringBoot.standard.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -13,11 +13,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class KafkaConsumerConfig {
-    @Value("${spring.  kafka.bootstrap-servers}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
     public Map<String, Object> consumerConfig(){
-        System.out.printf("Inside KafkaConsumerConfig:consumerConfig()");
+        System.out.println("Inside KafkaConsumerConfig:consumerConfig()");
         HashMap<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -27,7 +27,7 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
-        System.out.printf("Inside KafkaConsumerConfig:consumerFactory()");
+        System.out.println("Inside KafkaConsumerConfig:consumerFactory()");
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
 

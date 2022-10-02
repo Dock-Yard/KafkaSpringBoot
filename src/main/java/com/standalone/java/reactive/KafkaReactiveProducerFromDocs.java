@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class MyKafkaReactiveProducerFromDocs {
+public class KafkaReactiveProducerFromDocs {
 
     public static void main(String[] args){
         try {
-            System.out.println("Inside MyKafkaReactiveProducerFromDocs::main()::START::thread id=" + Thread.currentThread().getId() + ", thread name=" + Thread.currentThread().getName());
+            System.out.println("Inside KafkaReactiveProducerFromDocs::main()::START::thread id=" + Thread.currentThread().getId() + ", thread name=" + Thread.currentThread().getName());
 
             Map<String, Object> producerProps = new HashMap<>();
             producerProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -65,7 +65,7 @@ public class MyKafkaReactiveProducerFromDocs {
                     }
                 });
 
-            System.out.println("Inside MyKafkaReactiveProducerFromDocs::main()::END::thread id=" + Thread.currentThread().getId() + ", thread id=" + Thread.currentThread().getId() + ", thread name=" + Thread.currentThread().getName());
+            System.out.println("Inside KafkaReactiveProducerFromDocs::main()::END::thread id=" + Thread.currentThread().getId() + ", thread id=" + Thread.currentThread().getId() + ", thread name=" + Thread.currentThread().getName());
 
             System.out.println("completableFuture return=" + completableFuture.get());
             //Thread.sleep(5000);//if sender is closed before its completed, sending stops with error

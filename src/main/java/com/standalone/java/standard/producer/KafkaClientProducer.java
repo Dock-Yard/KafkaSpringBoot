@@ -1,4 +1,4 @@
-package com.standalone.java.standard;
+package com.standalone.java.standard.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
