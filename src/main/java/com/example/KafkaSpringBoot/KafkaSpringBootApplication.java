@@ -17,7 +17,6 @@ public class KafkaSpringBootApplication {
 	 * Sends message to Kafka
 	 */
 	@Bean
-
 	public CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
 		try {
 			System.out.printf("Inside KafkaSpringBootApplication:commandLineRunner()");
