@@ -15,16 +15,18 @@ public class KafkaClientConsumer {
         System.out.println("KafkaClientConsumer::main()::START");
 
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
-        properties.put("key.deserializer", StringDeserializer.class);
-        properties.put("value.deserializer", StringDeserializer.class);
-        properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "dummy_value");
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "dummy_value");
+
+        String topicName = "airPlaneTopic";
 
         try(KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<String, String>(properties)){
 
             System.out.println("Created kafkaConsumer");
 
-            kafkaConsumer.subscribe(List.of("airPlaneTopic"), new ConsumerRebalanceListener() {
+            kafkaConsumer.subscribe(List.of(topicName), new ConsumerRebalanceListener() {
                 @Override
                 public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                     System.out.println("Inside onPartitionsRevoked()::partitions=" + partitions);

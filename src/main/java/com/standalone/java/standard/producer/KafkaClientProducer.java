@@ -1,6 +1,7 @@
 package com.standalone.java.standard.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -14,11 +15,11 @@ public class KafkaClientProducer {
         System.out.println("KafkaClientConsumer::main()::START");
 
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
-        properties.put("key.serializer", StringSerializer.class);
-        properties.put("value.serializer", StringSerializer.class);
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 
-        try(KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);){
+        try(KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties)){
 
             ProducerRecord<String, String> producerRecord = new ProducerRecord<>("airPlaneTopic", "wuuuuuu");
 
