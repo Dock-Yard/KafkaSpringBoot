@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnProperty(value = "spring.producer.enabled", havingValue = "true", matchIfMissing = false)
 @RequiredArgsConstructor
-public class KafkaProducer {
+public class KafkaSpringProducer {
 
     @Value("${producer.topic.name}")
     private String topicName;

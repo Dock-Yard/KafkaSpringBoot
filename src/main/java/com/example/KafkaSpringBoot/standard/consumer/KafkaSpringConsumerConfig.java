@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class KafkaConsumerConfig {
+public class KafkaSpringConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
@@ -21,7 +21,7 @@ public class KafkaConsumerConfig {
     private String topicName;
 
     public Map<String, Object> consumerConfig(){
-        System.out.println("Inside KafkaConsumerConfig:consumerConfig()");
+        System.out.println("Inside KafkaSpringConsumerConfig:consumerConfig()");
         HashMap<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -32,13 +32,13 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
-        System.out.println("Inside KafkaConsumerConfig:consumerFactory()");
+        System.out.println("Inside KafkaSpringConsumerConfig:consumerFactory()");
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
 
     @Bean
     public ContainerProperties containerProperties(){
-        System.out.println("Inside KafkaConsumerConfig:containerProperties()");
+        System.out.println("Inside KafkaSpringConsumerConfig:containerProperties()");
         ContainerProperties containerProperties = new ContainerProperties(topicName);
 
         containerProperties.setMessageListener(

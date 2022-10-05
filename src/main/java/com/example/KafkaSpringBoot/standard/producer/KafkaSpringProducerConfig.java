@@ -13,13 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class KafkaProducerConfig {
+public class KafkaSpringProducerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
     public Map<String, Object> producerConfig(){
-        System.out.println("Inside KafkaProducerConfig:producerConfig()");
+        System.out.println("Inside KafkaSpringProducerConfig:producerConfig()");
         HashMap<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -29,13 +29,13 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProducerFactory<String, String> producerFactory(){
-        System.out.println("Inside KafkaProducerConfig:producerFactory()");
+        System.out.println("Inside KafkaSpringProducerConfig:producerFactory()");
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory){
-        System.out.println("Inside KafkaProducerConfig:kafkaTemplate()");
+        System.out.println("Inside KafkaSpringProducerConfig:kafkaTemplate()");
         return new KafkaTemplate<>(producerFactory);
     }
 
