@@ -13,7 +13,9 @@ public class KafkaSpringConsumer {
     public KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer(
             ConsumerFactory<String, String> consumerFactory, ContainerProperties containerProperties
     ){
-        System.out.println("Inside KafkaConsumerConfig:kafkaMessageListenerContainer()");
+        System.out.println("Inside KafkaConsumerConfig:kafkaMessageListenerContainer()\n" +
+                "consumerFactoryHash=" + consumerFactory.hashCode() +
+                ", containerPropertiesHash" + containerProperties.hashCode());
         return new KafkaMessageListenerContainer<>(consumerFactory, containerProperties);
     }
 }

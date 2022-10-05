@@ -43,7 +43,9 @@ public class KafkaSpringConsumerConfig {
 
         containerProperties.setMessageListener(
                 (MessageListener<String, String>) data ->
-                        System.out.println("Inside ContainerProperties::onMessage::data=" + data));
+                        System.out.println("Inside MessageListener::onMessage::"
+                                + "thread=" + Thread.currentThread().getId()
+                                + ", data=" + data));
 
         return containerProperties;
     }
